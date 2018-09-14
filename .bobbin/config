@@ -1,0 +1,9 @@
+[loader]
+jlink-device="nRF52840_xxAA"
+
+[filter]
+device = "1ba7f951"
+
+[builder]
+target = "thumbv7em-none-eabihf"
+
