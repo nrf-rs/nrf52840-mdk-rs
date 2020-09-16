@@ -2,7 +2,7 @@
 
 pub extern crate nrf52840_hal as hal;
 use hal::gpio::{p0, p1, Floating, Input};
-pub use hal::nrf52840_pac;
+pub use hal::pac;
 
 macro_rules! define_pins {
     ($(#[$topattr:meta])* struct $Type:ident,

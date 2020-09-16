@@ -7,7 +7,7 @@ use cortex_m_rt::entry;
 use nrf52840_mdk::hal::gpio::{p0, p1, Level};
 use nrf52840_mdk::hal::prelude::*;
 use nrf52840_mdk::hal::timer::Timer;
-use nrf52840_mdk::nrf52840_pac::Peripherals;
+use nrf52840_mdk::pac::Peripherals;
 use nrf52840_mdk::Pins;
 
 #[entry]
