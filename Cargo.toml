@@ -13,13 +13,19 @@ edition = "2018"
 nrf52840-hal = "0.11.0"
 
 [dev-dependencies]
-cortex-m-rt = "0.6"
+cortex-m-rt = "0.6.13"
 panic-halt = "0.2"
+rtt-target = { version = "0.2.2", features = ["cortex-m"] }
+panic-probe = { git = "https://github.com/knurling-rs/probe-run", branch = "main" }
+
+# for cargo flash
+[package.metadata]
+chip = "nRF52840_xxAA"
 
 [features]
 rt = ["nrf52840-hal/rt"]
-default = ["rt"]
 #usb = ["nrf52840-hal/usb"]
+default = ["rt"]
 
 [profile.dev]
 incremental = false
