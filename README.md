@@ -2,11 +2,20 @@
 
 https://github.com/makerdiary/nrf52840-mdk
 
-## flashing and printing with probe-run
+## flashing with cargo flash
 
-This is the recommended way to go.
+This is the recommended way to go for flashing
 
-* Install the dependencies for[probe-run](https://crates.io/crates/probe-run)
+* Install the dependencies for[cargo-flash](https://crates.io/crates/cargo-flash)
+* Install probe-run `cargo install cargo-flash`
+
+Then simply `cargo flash --release --example blinky`
+
+## debugging with probe-run
+
+This is the recommended way to go for debugging
+
+* Install the dependencies for[probe-run](https://crates.io/crates/probe-run) (same as for cargo-flash if you already have that)
 * Install probe-run `cargo install probe-run`
 * On linux you need udev rules saved to somewhere like /etc/udev/rules.d/50-cmsis-dap.rules
 
@@ -40,22 +49,7 @@ stack backtrace:
    9: 0x00000156 - Reset
 ```
 
-Note fresh out of the box devices seem to need to be erased
-
-```bash
-Error: Error while flashing
-Caused by:
-The execution of 'erase_sector' failed with code 103
-```
-
-Install some other tool like cargo-flash or pyocd one time and
-
-```bash
-pip3 install pyocd
-pyocd erase -t nrf52840 --chip
-```
-
-## OpenOCD
+## Debugging with OpenOCD
 
 I was unable to get this working with the openocd that ships with
 ubuntu 18.04, but was able to hook up SWD to my JLink.  This thread
@@ -63,7 +57,7 @@ is someone else having similar issues:
 
 https://devzone.nordicsemi.com/b/blog/posts/debugging-on-nrf52840-with-gdb-from-cli-on-linux
 
-## JLink
+## Debugging with JLink
 
 I hooked up my JLink using one of these breakouts:
 https://www.adafruit.com/product/2743
@@ -76,6 +70,10 @@ https://www.adafruit.com/product/2743
 | SWCLK | CLK          |
 | TDO   | SWO          |
 | GND   | GND x 3      |
+
+* Uncomment the `arm-none-eabi-gdb` runner in .cargo/config
+* Start your gdbserver
+* use `cargo run`
 
 ## License
 

@@ -15,8 +15,8 @@ nrf52840-hal = "0.11.0"
 [dev-dependencies]
 cortex-m-rt = "0.6.13"
 panic-halt = "0.2"
-rtt-target = { version = "0.2.2", features = ["cortex-m"] }
-panic-probe = { git = "https://github.com/knurling-rs/probe-run", branch = "main" }
+rtt-target = { version = "0.3.0", features = ["cortex-m"] }
+panic-probe = "0.1.0"
 
 # for cargo flash
 [package.metadata]
