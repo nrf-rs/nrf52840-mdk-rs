@@ -1,8 +1,8 @@
 #![no_std]
 
 pub extern crate nrf52840_hal as hal;
-use hal::gpio::{p0, p1, Floating, Input};
-pub use hal::nrf52840_pac;
+use hal::gpio::{p0, p1, Disconnected};
+pub use hal::pac;
 
 macro_rules! define_pins {
     ($(#[$topattr:meta])* struct $Type:ident,
@@ -15,8 +15,8 @@ macro_rules! define_pins {
 
 $(#[$topattr])*
 pub struct $Type {
-    $($(#[$attr])* pub $name: p0:: $pin_type <Input<Floating>>,)+
-    $($(#[$attr1])* pub $name1: p1:: $pin_type1 <Input<Floating>>,)+
+    $($(#[$attr])* pub $name: p0:: $pin_type <Disconnected>,)+
+    $($(#[$attr1])* pub $name1: p1:: $pin_type1 <Disconnected>,)+
 }
 
 impl $Type {
